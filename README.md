@@ -15,7 +15,7 @@ games are to be developed in here, setting the rules and such for a particular b
 A potential change that can occur in this header file is better organization when developing another board game
   - perhaps a headerfile for each game implemented? mostlikely excessive
 
-Interesting aspects to this project:
+#Interesting aspects to this project:
 - dynamically allocated 2D arrays for the board (pointer to pointer)
   - proper deallocation no mem leaks
   - copy constructor
@@ -31,7 +31,7 @@ Interesting aspects to this project:
   - On collision/occupying a specific tile (monopoly community/chance tiles)
   - tile randomizer, having different effects when landing on them
         
-Potential aspects to implement
+#Potential aspects to implement
 - circular boards 
   - linked list board (games like monopoly)
 - multiple "objects" occupying the same tile 
