@@ -3,13 +3,13 @@
 class games
 {
 public:
-    void ticTacToe();
+    bool ticTacToe();
 
 private:
     bool tTTWinCond(myBoard, bool, int, int);
 };
 
-void games::ticTacToe()
+bool games::ticTacToe()
 {
     int rows = 3;
     int cols = 3;
@@ -24,8 +24,6 @@ void games::ticTacToe()
     int col = 0;
     char colInput;
 
-    int turns = 0;
-
     bool finished = 0;
     bool playerTurn = 0;
     while(!finished)
@@ -37,11 +35,10 @@ void games::ticTacToe()
             bool validInput = 0;
             while(!validInput){
                 //assumes correct inputs only
-                std::cout << "\nPlayer " << playerTurn + 1 << "'s Turn: ";
+                std::cout << "Player " << playerTurn + 1 << "'s Turn: ";
                 std::cin >> row >> colInput;
                 std::cin.ignore(40, '\n');
 
-                col = (int)std::tolower(colInput) - 96; 
                 validInput = ticTacToe.boundCheck(row, col);
             }
 
@@ -73,22 +70,9 @@ void games::ticTacToe()
 
         playerTurn = !playerTurn;
         ticTacToe.printBoard();
-        turns += 1;
-        if (turns >= 9)
-        {
-            std::cout << "It's a draw!\n\n";
-            return;
-        }
     }
 
-    if (playerTurn == 1)
-    {
-        std::cout << "Player 1 wins!\n\n\n";
-    }
-    else
-    {
-        std::cout << "Player 2 wins!\n\n\n";
-    }
+    return !(playerTurn);
 }
 
 bool games::tTTWinCond(myBoard board, bool playerTurn, int rows, int cols)

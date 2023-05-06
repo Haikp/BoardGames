@@ -1,12 +1,11 @@
 #include <iostream>
+#include "board.h"
   
 int main()
 {
-    for (int i = 0; i < 3;)
-    {
-        for (int j = 0; j < 3; j++, i++)
-        {
-            std::cout << i << " " << j << std::endl;
-        }
-    }
+    int a = -1, b = -1;
+    std::cout << "test input: " << std::endl;
+    std::cin >> a >> b;
+
+    std::cout << a << " " << b << std::endl;
 }
