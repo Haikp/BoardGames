@@ -1,3 +1,6 @@
+#CURRENT WIP
+- monopoly current being added, certain aspects mentioned below being added
+
 # BoardGames
 Intent of this project was to experiment in developing reusable code
 

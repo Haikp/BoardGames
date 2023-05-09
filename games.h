@@ -2,18 +2,40 @@
 
 class games
 {
-public:
-    void ticTacToe();
+    public:
+    class ticTacToe
+    {
+    public:
+        void initialize();
 
-private:
-    bool tTTWinCond(myBoard, bool, int, int);
+    private:
+        bool winCond(myBoard::grid, bool, int, int);
+    };
+    
+    class monopoly
+    {
+        struct tile
+        {
+            std::string abbrev;
+            std::string name;
+            int rent0 = 0;
+            int rent1 = 0;
+            int rent2 = 0;
+            int rent3 = 0;
+            int rent4 = 0;
+            int remt5 = 0;
+            int mortgage = 0;
+            int houseCost = 0;
+            int hotelCost = 0;
+        };
+    };
 };
 
-void games::ticTacToe()
+void games::ticTacToe::initialize()
 {
     int rows = 3;
     int cols = 3;
-    myBoard ticTacToe;
+    myBoard::grid ticTacToe;
     ticTacToe.generateBoard(rows, cols);
 
     std::cout << "\nBoard Generated: \n";
@@ -61,14 +83,14 @@ void games::ticTacToe()
             //didnt have to make copy constructor,
             //couldve just passed in the 2d array
             //consider it for fun
-            myBoard boardCopy(ticTacToe);
-            finished = tTTWinCond(boardCopy, playerTurn, rows, cols);
+            myBoard::grid boardCopy(ticTacToe);
+            finished = winCond(boardCopy, playerTurn, rows, cols);
         }
         else
         {
             ticTacToe.placeObject('O', row, col);
-            myBoard boardCopy(ticTacToe);
-            finished = tTTWinCond(boardCopy, playerTurn, rows, cols);
+            myBoard::grid boardCopy(ticTacToe);
+            finished = winCond(boardCopy, playerTurn, rows, cols);
         }
 
         playerTurn = !playerTurn;
@@ -91,7 +113,7 @@ void games::ticTacToe()
     }
 }
 
-bool games::tTTWinCond(myBoard board, bool playerTurn, int rows, int cols)
+bool games::ticTacToe::winCond(myBoard::grid board, bool playerTurn, int rows, int cols)
 {
     char object;
     if (playerTurn == 0)

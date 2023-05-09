@@ -14,26 +14,27 @@ current plan:
 
 int main()
 {
-    games select;
     int gameSelect = 0;
     std::string exit;
     //prompt
     while (true){
         std::cout << "==========================================================\n";
-        std::cout << "Welcome to the Board Game Development Project!" << std::endl;
+        std::cout << "Welcome to the Board Game Development Project!\n";
         std::cout << "==========================================================\n\n";
-        std::cout << "Menu:\n";
+        std::cout << "Menu\n";
+        std::cout << "------------\n";
         std::cout << "1. Tic-Tac-Toe\n";
         // std::cout << "2. Checkers\n";
         std::cout << "10. Exit\n";
-        std::cout << "Please select a board game to play (input the number): " << std::endl;
+        std::cout << "Please select a board game to play (input the number): ";
         std::cin >> gameSelect;
         std::cin.ignore(40, '\n');
         switch (gameSelect)
         {
             case 1:
                 std::cout << "\nLoading Tic-Tac-Toe...\n";
-                select.ticTacToe();
+                games::ticTacToe selected;
+                selected.initialize();
                 break;
             case 10:
                 while(true){
