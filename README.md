@@ -1,6 +1,19 @@
 #CURRENT WIP
 - monopoly current being added, certain aspects mentioned below being added
 
+#progress log
+- circular boards successfully added
+  - use of LL made from scratch, a circular linked list, modified version of a doubly linked list
+  - to input the tiles, a csv can be used, as provided with monopoly.csv
+    - basic tail insert of data
+      - a struct was used to hold all the data of a tile in monopoly, as parsed in games.h
+- monopoly still in development, may not add the entirety of monopoly, and begin developing different board games
+  - its big board game with a lot of rules to implement, apologies
+    - the fact that its possible to develop monopoly through this library was the main goal
+- potential concepts to implement
+  - experimentation with friend classes/any other class typings
+    - maybe figure out more ways to organize the header files
+
 # BoardGames
 Intent of this project was to experiment in developing reusable code
 
