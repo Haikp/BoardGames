@@ -36,6 +36,7 @@ public:
         void playerCount(int);
         void movePlayer(int, int);
         bool looped(int);
+        void printBoard(std::string*, int);
         ~loop();
 
     private:
@@ -264,8 +265,18 @@ bool myBoard::loop<T>::looped(int id)
 }
 
 template <typename T>
+void myBoard::loop<T>::printBoard(std::string* board, int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        std::cout << board[i] << std::endl; 
+    }
+}
+
+template <typename T>
 myBoard::loop<T>::~loop()
 {
     //LL is deallocated through LL.h library, just need to deallocate players
-    delete[] player;
+    //delete[] player;
+    //std::cout << "is it here\n";
 }

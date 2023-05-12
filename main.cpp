@@ -24,6 +24,7 @@ int main()
         std::cout << "Menu\n";
         std::cout << "------------\n";
         std::cout << "1. Tic-Tac-Toe\n";
+        std::cout << "2. Monopoly (WIP)\n";
         // std::cout << "2. Checkers\n";
         std::cout << "10. Exit\n";
         std::cout << "Please select a board game to play (input the number): ";
@@ -33,8 +34,13 @@ int main()
         {
             case 1:
                 std::cout << "\nLoading Tic-Tac-Toe...\n";
-                games::ticTacToe selected;
-                selected.initialize();
+                games::ticTacToe tTT;
+                tTT.initialize();
+                break;
+            case 2:
+                std:: cout << "\nLoading Monopoly...\n";
+                games::monopoly monopoly;
+                monopoly.initialize();
                 break;
             case 10:
                 while(true){

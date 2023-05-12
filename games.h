@@ -1,4 +1,6 @@
 #include "board.h"
+#include <vector>
+#include <fstream>
 
 class games
 {
@@ -14,7 +16,7 @@ class games
     
     class monopoly
     {
-        struct tile
+        struct tiles
         {
             std::string abbrev;
             std::string name;
@@ -23,13 +25,19 @@ class games
             int rent2 = 0;
             int rent3 = 0;
             int rent4 = 0;
-            int remt5 = 0;
+            int rent5 = 0;
             int mortgage = 0;
             int houseCost = 0;
             int hotelCost = 0;
+            std::string owner = "bank";
         };
+    public:
+        void initialize();
+    private:
     };
 };
+
+std::string get_next(std::string&, const char); 
 
 void games::ticTacToe::initialize()
 {
@@ -211,4 +219,57 @@ bool games::ticTacToe::winCond(myBoard::grid board, bool playerTurn, int rows, i
     }
 
     return false;
+}
+
+void games::monopoly::initialize()
+{
+    std::vector<std::string> temp;
+    myBoard::loop<tiles> monopoly;
+    std::fstream inFile;
+    inFile.open("monopoly.csv");
+
+    while (true)
+    {
+        std::string tileInfo;
+        monopoly::tiles tile;
+        getline(inFile, tileInfo);
+        
+        if (inFile.eof())
+        {
+            break;
+        }
+
+        tile.abbrev = get_next(tileInfo, ',');
+        temp.push_back(tile.abbrev);
+        tile.name = get_next(tileInfo, ',');
+        tile.rent0 = std::stoi(get_next(tileInfo, ','));
+        tile.rent1 = std::stoi(get_next(tileInfo, ','));
+        tile.rent2 = std::stoi(get_next(tileInfo, ','));
+        tile.rent3 = std::stoi(get_next(tileInfo, ','));
+        tile.rent4 = std::stoi(get_next(tileInfo, ','));
+        tile.rent5 = std::stoi(get_next(tileInfo, ','));
+        tile.mortgage = std::stoi(get_next(tileInfo, ','));
+        tile.houseCost = std::stoi(get_next(tileInfo, ','));
+        tile.hotelCost = std::stoi(get_next(tileInfo, ','));
+        monopoly.populateBoard(tile);
+    }
+
+    myBoard::loop<tiles> copyBoard (monopoly);
+    std::string* abbrev = new std::string[temp.size()];
+    for (int i = 0; i < temp.size(); i++)
+    {
+        abbrev[i] = temp[i];
+    }
+
+    copyBoard.printBoard(abbrev, temp.size());
+    
+    delete[] abbrev;
+}
+
+std::string get_next(std::string& line, const char delimiter = ',')
+{
+    int index = line.find(delimiter);
+    std::string substr = line.substr(0, index);
+    line.erase(0, index + 1);
+    return substr;
 }
