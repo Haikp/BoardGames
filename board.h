@@ -279,4 +279,5 @@ myBoard::loop<T>::~loop()
     //LL is deallocated through LL.h library, just need to deallocate players
     //delete[] player;
     //std::cout << "is it here\n";
+    //it was btw, munmap_chunk(): invalid pointer
 }
